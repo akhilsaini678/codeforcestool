@@ -1,5 +1,6 @@
 # all about flask api and deploying ml model with flask api on heroku
 - this is flask project to host ml model on heroku and i am using this app for 
+- link to api : https://flaskapitesting.herokuapp.com/api/1616
 - this is fully workin app to featch ml model as api 
 codeforcestool project
 *how to create flask project*
