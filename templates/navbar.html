@@ -24,8 +24,8 @@
   <link href="{% static '/vendor/datepicker/daterangepicker.css' %}" rel="stylesheet" media="all">
 
   <!-- Main CSS-->
-  <link href="{% static '/css/style.css' %}" rel="stylesheet">
   <link href="{% static '/css/main.css' %}" rel="stylesheet" media="all">
+  <link href="{% static '/css/style.css' %}" rel="stylesheet">
   {% block our_team_CSS %}{% endblock %}
   {% block rating_bar %}{% endblock %}
   {% block dynamic_bar %}{% endblock %}
@@ -39,7 +39,7 @@
           <li style="float: left;">
             <a href="{% url 'index' %}"><img src="{% static '/images/cpclogo.png' %}" class="logo"></a>
           </li>
-          <li><a id="len1" class="hoverable" href="{% url 'index' %}">ICCC 2021</a></li>
+          <li><a id="len1" class="hoverable" href="{% url 'profile' %}">Profile</a></li>
           <li><a id="len2" class="hoverable" href="{% url 'ourteam' %}">Our Team</a></li>
           <li><a id="len3" class="hoverable" href="{% url 'register' %}">Register</a></li>
           <li><a id="len4" class="hoverable" href="{% url 'contactus' %}">Contact Us</a></li>

@@ -7,4 +7,5 @@ urlpatterns = [
     path('contactus/',views.contactus,name='contactus'),
     path('register',views.register,name='register'),
     path('iccc2020/',views.iccc2020,name='iccc2020'),
+    path('profile/',views.profile,name='profile'),
 ]

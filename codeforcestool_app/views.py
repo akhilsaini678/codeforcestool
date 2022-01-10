@@ -31,6 +31,93 @@ def index(request):
     contest_name = 'Codeforces Round 780 (Div 2)'
     return render(request,'index.html',{'contest_name':contest_name,'lists':lists})
 
+def profile(request):
+    sign=0
+    user_name=request.POST.get('username')
+    print(user_name)
+    if user_name != None :
+        print("Hello World")
+        user_details=requests.get("https://codeforces.com/api/user.info?handles="+user_name)
+        ls=user_details.json()
+        ls_main = ls['result'] 
+        
+        if ls['status'] == "OK" :
+            sign=1
+            dict_data=ls_main[0]
+
+
+
+            user_rating=requests.get("https://codeforces.com/api/user.rating?handle="+user_name)
+            ls=user_rating.json()
+            ls_main = ls['result']
+            total_contests = len(ls_main)
+
+            best_rank=1000000
+            worst_rank=0
+            max_up=0
+            max_down=0
+            new=0
+            old=0
+            for i in ls_main:
+                best_rank=min(best_rank,i['rank'])
+                worst_rank=max(worst_rank,i['rank'])
+                old=i['oldRating']
+                new=i['newRating']
+                if old >= new :
+                    max_down=max(max_down,old-new)
+                else:
+                    max_up=max(max_up,new-old)
+
+            list_contest_stat = []
+            list_contest_stat.append(total_contests)
+            list_contest_stat.append(best_rank)
+            list_contest_stat.append(worst_rank)
+            list_contest_stat.append(max_up)
+            list_contest_stat.append(max_down)
+    
+            print(best_rank,worst_rank,max_up,max_down)
+
+
+            # Submissions Details
+            user_submissions=requests.get("https://codeforces.com/api/user.status?handle="+user_name+"&from=1&count=10000")
+            ls=user_submissions.json()
+            ls_main = ls['result']
+            total_submissions = len(ls_main)
+
+            # Dictonaries 
+            dict_lang = {}
+            dict_verdict = {}
+            dict_tags = {}
+            dict_index = {}
+            dict_qrating = {}
+
+            # Looping through all submissions of a user
+            for i in ls_main:
+                dict_lang[i['programmingLanguage']] = dict_lang[i['programmingLanguage']]+1 if i['programmingLanguage'] in dict_lang else 1
+                dict_verdict[i['verdict']] = dict_verdict[i['verdict']]+1 if i['verdict'] in dict_verdict else 1
+                val=i['problem']['index']
+                dict_index[val] = dict_index[val]+1 if val in dict_index else 1
+                if 'rating' in i['problem']:
+                    val=i['problem']['rating']
+                    dict_qrating[val] = dict_qrating[val]+1 if val in dict_qrating else 1
+                for j in i['problem']['tags']:
+                    dict_tags[j] = dict_tags[j]+1 if j in dict_tags else 1  
+    
+            print(dict_qrating)
+            print(dict_index)
+            print(dict_tags)
+            print(dict_lang)
+            print(dict_verdict)
+            print(total_submissions)
+            # dict_data=ls_main[0]
+            # print(ls_main)
+            # print(dict_data)
+            # print(dict_data['firstName']+' '+dict_data['lastName'])
+            return render(request,'profile.html',{'sign':sign,'data':dict_data,'ls_contest':list_contest_stat,'total_sub':total_submissions,'languages_used':dict_lang,'sol_res':dict_verdict})
+        else:
+            sign=2
+    return render(request,'profile.html',{'sign':sign})
+
 def ourteam(request):
     return render(request,'ourteam.html',{})
 
