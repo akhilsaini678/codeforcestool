@@ -8,16 +8,82 @@ Your Profile
 
 {% block content %}
 <div class="search_bar">
-    <form action='' method="POST">
+    <form action='' method="POST" style="margin: 0px; padding: 0px; width: 100%;">
         {% csrf_token %}
-        <input type="text"  placeholder="Your Codeforces ID" name="username" class="search_input_box" style="font-size: 36px; padding: 6%; padding-right: 6vh; width: 60%; flex: 1;height: 40px;border: none;outline: none;">
-        <button type="submit"><i class="fa fa-search" aria-hidden="true" style="font-size: 36px; color: #777;"></i></button>
+        <input type="text"  placeholder="Your Codeforces ID" name="username" class="search_input_box" style="font-size: 36px;  width: 80%; flex: 1;height: 40px;border: none;outline: none;">
+        <button type="submit"><i class="fa fa-search" aria-hidden="true" style="font-size: 36px; color: #777; right: 0;"></i></button>
     </form>
 </div>
 
 
 
+
+
+
 {% if sign == 1 %}
+
+
+
+<div class="main_box">
+    <div class="profile">
+        <table>
+            <tr>
+                <td>Statstics of</td>
+                <td style="text-align: right;">{{ data.firstName}} {{ data.lastName }}</td>
+            </tr>
+            <tr>
+                <td>Rating</td>
+                <td style="text-align: right;">{{ data.rating }}</td>
+            </tr>
+            <tr>
+                <td>Rank</td>
+                <td style="text-align: right;">{{ data.rank }}</td>
+            </tr>
+            <tr>
+                <td>Max Rating</td>
+                <td style="text-align: right;">{{ data.maxRating }}</td>
+            </tr>
+            <tr>
+                <td>Max Rank</td>
+                <td style="text-align: right;">{{ data.maxRank }}</td>
+            </tr>
+            <tr>
+                <td>Total Submissions</td>
+                <td style="text-align: right;">{{ total_sub }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="profile">
+        <table>
+            <tr>
+                <td>Statstics of</td>
+                <td style="text-align: right;">{{ data.firstName}} {{ data.lastName }}</td>
+            </tr>
+            <tr>
+                <td>Number of contests</td>
+                <td style="text-align: right;">{{ ls_contest.0 }}</td>
+            </tr>
+            <tr>
+                <td>Best Rank</td>
+                <td style="text-align: right;">{{ ls_contest.1 }}</td>
+            </tr>
+            <tr>
+                <td>Worst Rank</td>
+                <td style="text-align: right;">{{ ls_contest.2 }}</td>
+            </tr>
+            <tr>
+                <td>Max Up</td>
+                <td style="text-align: right;">{{ ls_contest.3 }}</td>
+            </tr>
+            <tr>
+                <td>Max Down</td>
+                <td style="text-align: right;">{{ ls_contest.4 }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
 <script type="text/javascript">
     window.onload = function () {
         var chart = new CanvasJS.Chart("chartContainer",
@@ -26,8 +92,8 @@ Your Profile
                     text: "Languages Used"
                 },
                 legend: {
-                    maxWidth: 350,
-                    itemWidth: 120
+                    maxWidth: 600,
+                    itemWidth: 300
                 },
                 data: [
                     {
@@ -57,8 +123,8 @@ Your Profile
                     text: "Verdict"
                 },
                 legend: {
-                    maxWidth: 350,
-                    itemWidth: 120
+                    maxWidth: 600,
+                    itemWidth: 300
                 },
                 data: [
                     {
@@ -84,110 +150,38 @@ Your Profile
     }
 </script>
 <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-<div id="chartContainer" style="height: 300px; width: 50%; margin: auto; border-radius: 10vh;"></div>
+<div class="profiles"><div id="chartContainer"  style="height: 500px; width: 60%; margin: auto;"></div><br><br></div>
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-<div id="chartContainer11" style="height: 300px; width: 50%; margin: auto; border-radius: 10vh;"></div>
+<div class="profiles"><div id="chartContainer11"  style="height: 500px; width: 60%; margin: auto;"></div><br><br></div>
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
-
-
-
-
-
-
-<div class="main_box">
-<div class="profile">
-    <table>
-        <tr>
-            <td>Statstics of</td>
-            <td style="text-align: right;">{{ data.firstName}} {{ data.lastName }}</td>
-        </tr>
-        <tr>
-            <td>Rating</td>
-            <td style="text-align: right;">{{ data.rating }}</td>
-        </tr>
-        <tr>
-            <td>Rank</td>
-            <td style="text-align: right;">{{ data.rank }}</td>
-        </tr>
-        <tr>
-            <td>Max Rating</td>
-            <td style="text-align: right;">{{ data.maxRating }}</td>
-        </tr>
-        <tr>
-            <td>Max Rank</td>
-            <td style="text-align: right;">{{ data.maxRank }}</td>
-        </tr>
-        <tr>
-            <td>Total Submissions</td>
-            <td style="text-align: right;">{{ total_sub }}</td>
-        </tr>
-    </table>
-</div>
-<div class="profile">
-    <table>
-        <tr>
-            <td>Statstics of</td>
-            <td style="text-align: right;">{{ data.firstName}} {{ data.lastName }}</td>
-        </tr>
-        <tr>
-            <td>Number of contests</td>
-            <td style="text-align: right;">{{ ls_contest.0 }}</td>
-        </tr>
-        <tr>
-            <td>Best Rank</td>
-            <td style="text-align: right;">{{ ls_contest.1 }}</td>
-        </tr>
-        <tr>
-            <td>Worst Rank</td>
-            <td style="text-align: right;">{{ ls_contest.2 }}</td>
-        </tr>
-        <tr>
-            <td>Max Up</td>
-            <td style="text-align: right;">{{ ls_contest.3 }}</td>
-        </tr>
-        <tr>
-            <td>Max Down</td>
-            <td style="text-align: right;">{{ ls_contest.4 }}</td>
-        </tr>
-    </table>
-</div>
-</div>
-
 {% endif %}
+
+
 
 
 {% if sign == 2 %}
 <div>
-    <h1>Enter correct ID</h1>
+    <h1 style="color: white;">Enter Correct ID</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 </div>
 {% endif %}
 
 
 
-
-
-
-
-
-
-
-<!-- <div class="pie_chart" >
-    <h1>Akhil Saini</h1>
-    <h1>Contest Attended : </h1>
-</div>
-<div class="pie_chart">
-    <h1>Akhil Saini</h1>
-    <h1>Contest Attended : </h1>
-</div> -->
 
 {% endblock %}

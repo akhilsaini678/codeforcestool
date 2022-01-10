@@ -7,12 +7,14 @@ Register Yourself for ICCC2022
 {% endblock %}
 
 {% block content %}
+    <h1 style="color: white;">{{ msg }}</h1>
     <div class="page-wrapper bg-gra-02 p-t-303 p-b-100 font-poppins" style="margin:2%">
         <div class="wrapper wrapper--w680">
             <div class="card card-4" style="box-shadow: 36px 36px 36px rgb(36, 36, 36);">
                 <div class="card-body">
                     <h2 class="title">Registration Form</h2>
-                    <form action="register" method="POST">
+                    <form action='' method="POST">
+                        {% csrf_token %}
                         <div class=" row row-space">
                             <div class="col-2">
                                 <div class="input-group">
@@ -42,7 +44,7 @@ Register Yourself for ICCC2022
                                     <label class="label">Gender *</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male
-                                            <input type="radio" checked="checked" name="gender" required>
+                                            <input type="radio" checked="checked" name="Gender" required>
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Female

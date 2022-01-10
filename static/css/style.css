@@ -284,7 +284,7 @@ nav {
   display: flex;
   align-items: center;
   box-shadow: 36px 36px 36px rgb(36, 36, 36);
-  margin-bottom: 30vh;
+  margin-bottom: 15vh;
 }
 
 .search_input_box {
@@ -293,13 +293,16 @@ nav {
 }
 
 .main_box {
-  width: 90%;
+  width: 100%;
   margin: auto;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15vh;
 }
 
 .profile {
+  position: relative;
   width: 45%;
-  float: left;
   text-align: left;
   padding: 3vw;
   margin: 2vw;
@@ -309,9 +312,20 @@ nav {
   margin-bottom: 10vh;
 }
 
+.profiles {
+  width: 70%;
+  height: fit-content;
+  /* text-align: left; */
+  margin: auto;
+  border-radius: 10vh;
+  background: white;
+  box-shadow: 36px 36px 36px rgb(36, 36, 36);
+  margin-bottom: 10vh;
+}
+
 .profile table  {
   width: 100%;
-  font-size: 24px;
+  font-size: 1rem;
   font-weight: 600;
 }
 
@@ -324,6 +338,5 @@ nav {
 }
 
 canvas {
-  border-radius: 20 vh;
   /* background-image: linear-gradient(to right,#16222A,#3A6073); */
 }

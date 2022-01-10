@@ -34,15 +34,13 @@ def index(request):
 def profile(request):
     sign=0
     user_name=request.POST.get('username')
-    print(user_name)
-    if user_name != None :
-        print("Hello World")
+    if user_name != None and user_name != '' :
         user_details=requests.get("https://codeforces.com/api/user.info?handles="+user_name)
-        ls=user_details.json()
-        ls_main = ls['result'] 
+        ls=user_details.json() 
         
         if ls['status'] == "OK" :
             sign=1
+            ls_main = ls['result']
             dict_data=ls_main[0]
 
 
@@ -75,7 +73,6 @@ def profile(request):
             list_contest_stat.append(max_up)
             list_contest_stat.append(max_down)
     
-            print(best_rank,worst_rank,max_up,max_down)
 
 
             # Submissions Details
@@ -103,12 +100,12 @@ def profile(request):
                 for j in i['problem']['tags']:
                     dict_tags[j] = dict_tags[j]+1 if j in dict_tags else 1  
     
-            print(dict_qrating)
-            print(dict_index)
-            print(dict_tags)
-            print(dict_lang)
-            print(dict_verdict)
-            print(total_submissions)
+            # print(dict_qrating)
+            # print(dict_index)
+            # print(dict_tags)
+            # print(dict_lang)
+            # print(dict_verdict)
+            # print(total_submissions)
             # dict_data=ls_main[0]
             # print(ls_main)
             # print(dict_data)
@@ -122,7 +119,25 @@ def ourteam(request):
     return render(request,'ourteam.html',{})
 
 def register(request):
-    return render(request,'register.html',{})
+    msg = ''
+    if request.method == 'POST':
+        first = request.POST.get('First')
+        last = request.POST.get('Last')
+        codechef_id = request.POST.get('Codechef_ID')
+        gender = request.POST.get('Gender')
+        email = request.POST.get('Email')
+        phone_no = request.POST.get('Phone')
+        year = request.POST.get('Year')
+        branch = request.POST.get('Branch')
+        myemail = 'akhilsainiwork@gmail.com'
+
+        if not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            msg = 'Invalid email address !'
+        else:
+            message = 'Name : '+ first+' '+last +'\nEmail : '+email+'\nCodechef ID : '+codechef_id+'\nGender : '+gender+'\nEmail : '+email+'\nPhone No. : '+phone_no+'\nBranch : '+branch+'\nYear : '+year 
+            send_mail('Message From Codeforces Tool : Registration',message,'',[myemail])
+            msg = 'You have been successfully registered. Thank You.'
+    return render(request,'register.html',{'msg':msg})
 
 def contactus(request):
 
@@ -138,7 +153,7 @@ def contactus(request):
             msg = 'Invalid email address !'
         else:
             message = 'Name : '+ first+' '+last +'\nEmail : '+email+'\nMessage : '+message
-            send_mail('Message From Codeforces Tool',message,'',[myemail])
+            send_mail('Message From Codeforces Tool : Suggestion',message,'',[myemail])
             msg = 'Your message have been sent successfully. Thank You.'
 
     return render(request,'contactus.html',{'msg':msg})
