@@ -28,7 +28,7 @@ def index(request):
     context = {
          "problem_name" : ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J'],
     }
-    contest_name = 'Codeforces Round 780 (Div 2)'
+    contest_name = 'Codeforces Round 766 (Div 2)'
     return render(request,'index.html',{'contest_name':contest_name,'lists':lists})
 
 def profile(request):
