@@ -16,7 +16,7 @@ class contest_details():
 # Create your views here.
 def index(request):
     
-    response=requests.get("https://flaskapitesting.herokuapp.com/api/1616")
+    response=requests.get("https://flaskapitesting.herokuapp.com/api/1627")
     print(response.status_code)
     # print(response.json())
     ls = response.json()
