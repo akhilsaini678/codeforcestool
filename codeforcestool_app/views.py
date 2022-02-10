@@ -16,7 +16,7 @@ class contest_details():
 # Create your views here.
 def index(request):
     
-    response=requests.get("https://flaskapitesting.herokuapp.com/api/1627")
+    response=requests.get("https://flaskapitesting.herokuapp.com/api/1634")
     print(response.status_code)
     # print(response.json())
     ls = response.json()
@@ -28,7 +28,7 @@ def index(request):
     context = {
          "problem_name" : ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J'],
     }
-    contest_name = 'Codeforces Round 766 (Div 2)'
+    contest_name = 'Codeforces Round 770 (Div 2)'
     return render(request,'index.html',{'contest_name':contest_name,'lists':lists})
 
 def profile(request):
