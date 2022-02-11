@@ -32,10 +32,10 @@ def index(request):
          "problem_name" : ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J'],
     }
     contest_name = 'Contest ID : '
-    if contest_ID != None and contest_ID != '':
-        contest_name+='1634'
-    else:
+    if contest_ID != None and contest_ID != '' and int(contest_ID)>=1 and int(contest_ID)<=1635:
         contest_name+=str(contest_ID)
+    else:
+        contest_name+='1634'
     return render(request,'index.html',{'contest_name':contest_name,'lists':lists})
 
 def profile(request):
