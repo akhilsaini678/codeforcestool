@@ -16,7 +16,7 @@ class contest_details():
 # Create your views here.
 def index(request):
     contest_ID = request.POST.get('contest_ID')
-    if contest_ID != None and contest_ID != '' and int(contest_ID)>=1 and int(contest_ID)<=1642:
+    if contest_ID != None and contest_ID != '' and int(contest_ID)>=1 and int(contest_ID)<=1675:
         response=requests.get("https://flaskapitesting.herokuapp.com/api/"+contest_ID)
     else:
         response=requests.get("https://flaskapitesting.herokuapp.com/api/100")
@@ -32,7 +32,7 @@ def index(request):
          "problem_name" : ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J'],
     }
     contest_name = 'Contest ID : '
-    if contest_ID != None and contest_ID != '' and int(contest_ID)>=1 and int(contest_ID)<=1642:
+    if contest_ID != None and contest_ID != '' and int(contest_ID)>=1 and int(contest_ID)<=1675:
         contest_name+=str(contest_ID)
     else:
         contest_name+='100'
