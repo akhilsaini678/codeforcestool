@@ -16,17 +16,10 @@ class contest_details():
 # Create your views here.
 def index(request):
     contest_ID = request.POST.get('contest_ID')
-<<<<<<< HEAD
-    if contest_ID != None and contest_ID != '' and int(contest_ID)>=1 and int(contest_ID)<=1634:
-        response=requests.get("https://flaskapitesting.herokuapp.com/api/"+contest_ID)
-    else:
-        response=requests.get("https://flaskapitesting.herokuapp.com/api/1634")
-=======
     if contest_ID != None and contest_ID != '' and int(contest_ID)>=1 and int(contest_ID)<=1675:
         response=requests.get("https://flaskapitesting.herokuapp.com/api/"+contest_ID)
     else:
         response=requests.get("https://flaskapitesting.herokuapp.com/api/100")
->>>>>>> c4b927f855557231652ef296baf8058511564c11
     print(response.status_code)
     # print(response.json())
     ls = response.json()
@@ -38,15 +31,11 @@ def index(request):
     context = {
          "problem_name" : ['A','B','C','D','E', 'F', 'G', 'H', 'I', 'J'],
     }
-<<<<<<< HEAD
-    contest_name = 'Codeforces Round 770 (Div 2)'
-=======
     contest_name = 'Contest ID : '
     if contest_ID != None and contest_ID != '' and int(contest_ID)>=1 and int(contest_ID)<=1675:
         contest_name+=str(contest_ID)
     else:
         contest_name+='100'
->>>>>>> c4b927f855557231652ef296baf8058511564c11
     return render(request,'index.html',{'contest_name':contest_name,'lists':lists})
 
 def profile(request):
