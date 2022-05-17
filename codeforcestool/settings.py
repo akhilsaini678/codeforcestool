@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7+*a680x_d*_q#a7b2+1#3e&p(ty1lq9uj1%08=+o#=i_7_02+' # os.environ['SECRET_KEY']
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["codeforcestool.herokuapp.com","127.0.0.1"]
 
@@ -131,7 +131,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'akhilsainiwork@gmail.com'
-EMAIL_HOST_PASSWORD = 'phzdwaxflvrstpss' # os.environ['EMAIL_PASSWORD'] 
+EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD'] 
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
