@@ -31,6 +31,14 @@
 <h1>{{ forloop.counter }}</h1>
 {% endfor %} -->
 
+<div class="search_bar">
+  <form action='' method="POST" style="margin: 0px; padding: 0px; width: 100%;">
+      {% csrf_token %}
+      <input type="number" placeholder="Contest ID" name="contest_ID" class="search_input_box" style="font-size: 36px;  width: 80%; flex: 1;height: 40px;border: none;outline: none;">
+      <button type="submit"><i class="fa fa-search" aria-hidden="true" style="font-size: 36px; color: #777; right: 0;"></i></button>
+  </form>
+</div>
+
   <div class="skill-bars">
     
     {% for i in lists %}
