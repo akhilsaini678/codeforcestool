@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["codeforcestool.herokuapp.com","127.0.0.1"]
+ALLOWED_HOSTS = ["codeforcestool.render.com,""codeforcestool.herokuapp.com","127.0.0.1"]
 
 
 # Application definition
@@ -137,4 +137,4 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 
-CSRF_TRUSTED_ORIGINS = ['https://codeforcestool.herokuapp.com']
+CSRF_TRUSTED_ORIGINS = ['https://codeforcestool.render.com','https://codeforcestool.herokuapp.com']
