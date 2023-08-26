@@ -25,4 +25,4 @@ sklearn==0.0
 threadpoolctl==3.0.0
 waitress==2.0.0
 Werkzeug==2.0.2
-django = 3.2.20
+django==3.2.20
