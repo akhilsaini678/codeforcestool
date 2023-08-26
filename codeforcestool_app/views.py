@@ -17,9 +17,9 @@ class contest_details():
 def index(request):
     contest_ID = request.POST.get('contest_ID')
     if contest_ID != None and contest_ID != '' and int(contest_ID)>=1 and int(contest_ID)<=1675:
-        response=requests.get("https://flaskapitesting.render.com/api/"+contest_ID)
+        response=requests.get("https://flaskapitesting.onrender.com/api/"+contest_ID)
     else:
-        response=requests.get("https://flaskapitesting.render.com/api/100")
+        response=requests.get("https://flaskapitesting.onrender.com/api/100")
     print(response.status_code)
     # print(response.json())
     ls = response.json()
